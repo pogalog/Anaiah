@@ -1,0 +1,6 @@
+1,WeaponThing,0,[1, 1],It kills things... what do you want from me?
+5,WeaponThing,1,[2, 3],It kills things... what do you want from me?
+0,WeaponThing,1,[1, 1],It kills things... what do you want from me?
+3,WeaponThing,2,[1, 1],It kills things... what do you want from me?
+2,WeaponThing,2,[1, 1],It kills things... what do you want from me?
+4,WeaponThing,3,[1, 1],It kills things... what do you want from me?

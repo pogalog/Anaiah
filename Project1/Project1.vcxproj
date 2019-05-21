@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6EC6FE08-E2B7-419A-8757-1807901DD4A5}</ProjectGuid>
+    <RootNamespace>Project1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\local\boost_1_60_0;.;Dependencies\lua;C:\Program Files (x86)\OpenAL 1.1 SDK\include;C:\Program Files (x86)\Mega-Nerd\libsndfile\include;Dependencies\integral</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>Dependencies\lua;C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32;C:\Program Files (x86)\Mega-Nerd\libsndfile\lib;C:\local\boost_1_60_0\lib32-msvc-14.0</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib;lua5.3.2-static.lib;OpenAL32.lib;libsndfile-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Boost\boost_1_69_0;.;Dependencies\lua;C:\Program Files (x86)\OpenAL 1.1 SDK\include;C:\Program Files (x86)\Mega-Nerd\libsndfile\include;Dependencies\integral</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>Dependencies\lua;C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32;C:\Program Files (x86)\Mega-Nerd\libsndfile\lib;C:\Boost\lib;C:\local\boost_1_60_0\lib32-msvc-14.0</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib;lua5.3.2-static.lib;OpenAL32.lib;libsndfile-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="audio\AudioManager.cpp" />
+    <ClCompile Include="fileio\AudioIO.cpp" />
+    <ClCompile Include="fileio\FileIOUtil.cpp" />
+    <ClCompile Include="fileio\FontMapIOUtil.cpp" />
+    <ClCompile Include="fileio\LevelMapIO.cpp" />
+    <ClCompile Include="fileio\ModelIO.cpp" />
+    <ClCompile Include="fileio\ShaderIO.cpp" />
+    <ClCompile Include="game\AssetManager.cpp" />
+    <ClCompile Include="game\Camera.cpp" />
+    <ClCompile Include="game\GameInstance.cpp" />
+    <ClCompile Include="game\GridRow.cpp" />
+    <ClCompile Include="game\Lens.cpp" />
+    <ClCompile Include="game\LevelMap.cpp" />
+    <ClCompile Include="game\MapGrid.cpp" />
+    <ClCompile Include="game\MapTile.cpp" />
+    <ClCompile Include="game\TileRange.cpp" />
+    <ClCompile Include="game\Unit.cpp" />
+    <ClCompile Include="game\UnitPath.cpp" />
+    <ClCompile Include="game\Weapon.cpp" />
+    <ClCompile Include="geom\ProceduralGeom.cpp" />
+    <ClCompile Include="gui\CursorInputProcessor.cpp" />
+    <ClCompile Include="input\ControllerPort.cpp" />
+    <ClCompile Include="input\CXBOXController.cpp" />
+    <ClCompile Include="input\InputProc.cpp" />
+    <ClCompile Include="input\Keyboard.cpp" />
+    <ClCompile Include="lua\LuaController.cpp" />
+    <ClCompile Include="lua\LuaKeyboard.cpp" />
+    <ClCompile Include="lua\LuaScript.cpp" />
+    <ClCompile Include="lua\lua_util.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="math\Transform.cpp" />
+    <ClCompile Include="math\Vec2i.cpp" />
+    <ClCompile Include="math\Vec3i.cpp" />
+    <ClCompile Include="model\Animation.cpp" />
+    <ClCompile Include="model\AnimationChannel.cpp" />
+    <ClCompile Include="model\AnimationKey.cpp" />
+    <ClCompile Include="model\Armature.cpp" />
+    <ClCompile Include="model\Bone.cpp" />
+    <ClCompile Include="model\Material.cpp" />
+    <ClCompile Include="model\Mesh.cpp" />
+    <ClCompile Include="model\Model.cpp" />
+    <ClCompile Include="model\ModelUtil.cpp" />
+    <ClCompile Include="model\Node.cpp" />
+    <ClCompile Include="network\Client.cpp" />
+    <ClCompile Include="network\Network.cpp" />
+    <ClCompile Include="network\NetworkNode.cpp" />
+    <ClCompile Include="network\Server.cpp" />
+    <ClCompile Include="prop\Prop.cpp" />
+    <ClCompile Include="render\Color.cpp" />
+    <ClCompile Include="render\Cubemap.cpp" />
+    <ClCompile Include="render\Framebuffer.cpp" />
+    <ClCompile Include="render\GameRenderer.cpp" />
+    <ClCompile Include="render\IntroRenderer.cpp" />
+    <ClCompile Include="render\LightSource.cpp" />
+    <ClCompile Include="render\ParticleSystem.cpp" />
+    <ClCompile Include="render\RenderUnit.cpp" />
+    <ClCompile Include="render\Shader.cpp" />
+    <ClCompile Include="render\Texture.cpp" />
+    <ClCompile Include="render\Uniform.cpp" />
+    <ClCompile Include="text\FontMap.cpp" />
+    <ClCompile Include="text\TextAssetManager.cpp" />
+    <ClCompile Include="text\TextItem.cpp" />
+    <ClCompile Include="ui\GameMenu.cpp" />
+    <ClCompile Include="ui\GameMenuItem.cpp" />
+    <ClCompile Include="ui\Overlay.cpp" />
+    <ClCompile Include="ui\OverlayItem.cpp" />
+    <ClCompile Include="util\Util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="audio\ALSound.h" />
+    <ClInclude Include="audio\AudioManager.h" />
+    <ClInclude Include="fileio\AudioIO.h" />
+    <ClInclude Include="fileio\FileIOUtil.h" />
+    <ClInclude Include="fileio\FontMapIOUtil.h" />
+    <ClInclude Include="fileio\LevelMapIO.h" />
+    <ClInclude Include="fileio\ModelIO.h" />
+    <ClInclude Include="fileio\ShaderIO.h" />
+    <ClInclude Include="game\AssetManager.h" />
+    <ClInclude Include="game\Camera.h" />
+    <ClInclude Include="game\Edge.h" />
+    <ClInclude Include="game\GameInstance.h" />
+    <ClInclude Include="game\GridRow.h" />
+    <ClInclude Include="game\Lens.h" />
+    <ClInclude Include="game\LevelMap.h" />
+    <ClInclude Include="game\MapGrid.h" />
+    <ClInclude Include="game\MapTile.h" />
+    <ClInclude Include="game\TileRange.h" />
+    <ClInclude Include="game\Unit.h" />
+    <ClInclude Include="game\UnitPath.h" />
+    <ClInclude Include="game\Weapon.h" />
+    <ClInclude Include="geom\ProceduralGeom.h" />
+    <ClInclude Include="gui\CursorInputProcessor.h" />
+    <ClInclude Include="input\ControllerListener.h" />
+    <ClInclude Include="input\ControllerPort.h" />
+    <ClInclude Include="input\CXBOXController.h" />
+    <ClInclude Include="input\InputProc.h" />
+    <ClInclude Include="input\Keyboard.h" />
+    <ClInclude Include="input\KeyboardListener.h" />
+    <ClInclude Include="lua\LuaAsset.h" />
+    <ClInclude Include="lua\LuaCamera.h" />
+    <ClInclude Include="lua\LuaController.h" />
+    <ClInclude Include="lua\LuaIntro.h" />
+    <ClInclude Include="lua\LuaKeyboard.h" />
+    <ClInclude Include="lua\LuaModel.h" />
+    <ClInclude Include="lua\LuaNetwork.h" />
+    <ClInclude Include="Lua\LuaOverlay.h" />
+    <ClInclude Include="lua\LuaRender.h" />
+    <ClInclude Include="lua\LuaScene.h" />
+    <ClInclude Include="lua\LuaText.h" />
+    <ClInclude Include="lua\LuaGameInstance.h" />
+    <ClInclude Include="lua\LuaLevelMap.h" />
+    <ClInclude Include="lua\LuaMenu.h" />
+    <ClInclude Include="lua\LuaScript.h" />
+    <ClInclude Include="lua\LuaShader.h" />
+    <ClInclude Include="lua\LuaUnit.h" />
+    <ClInclude Include="lua\lua_translate.h" />
+    <ClInclude Include="lua\lua_util.h" />
+    <ClInclude Include="main\GlobalDefs.h" />
+    <ClInclude Include="math\DynamicState.h" />
+    <ClInclude Include="math\Range.h" />
+    <ClInclude Include="math\Transform.h" />
+    <ClInclude Include="math\Vec2i.h" />
+    <ClInclude Include="math\Vec3i.h" />
+    <ClInclude Include="model\Animation.h" />
+    <ClInclude Include="model\AnimationChannel.h" />
+    <ClInclude Include="model\AnimationKey.h" />
+    <ClInclude Include="model\Armature.h" />
+    <ClInclude Include="model\Bone.h" />
+    <ClInclude Include="model\Material.h" />
+    <ClInclude Include="model\Mesh.h" />
+    <ClInclude Include="model\Model.h" />
+    <ClInclude Include="model\ModelUtil.h" />
+    <ClInclude Include="model\Node.h" />
+    <ClInclude Include="network\Client.h" />
+    <ClInclude Include="network\Network.h" />
+    <ClInclude Include="network\NetworkListener.h" />
+    <ClInclude Include="network\NetworkNode.h" />
+    <ClInclude Include="network\Server.h" />
+    <ClInclude Include="prop\Prop.h" />
+    <ClInclude Include="render\Color.h" />
+    <ClInclude Include="render\Cubemap.h" />
+    <ClInclude Include="render\Error.h" />
+    <ClInclude Include="render\Framebuffer.h" />
+    <ClInclude Include="render\GameRenderer.h" />
+    <ClInclude Include="render\IntroRenderer.h" />
+    <ClInclude Include="render\LightSource.h" />
+    <ClInclude Include="render\ParticleSystem.h" />
+    <ClInclude Include="render\RenderUnit.h" />
+    <ClInclude Include="render\Shader.h" />
+    <ClInclude Include="render\Texture.h" />
+    <ClInclude Include="render\Uniform.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="text\FontMap.h" />
+    <ClInclude Include="text\TextAssetManager.h" />
+    <ClInclude Include="text\TextItem.h" />
+    <ClInclude Include="ui\GameMenu.h" />
+    <ClInclude Include="ui\GameMenuItem.h" />
+    <ClInclude Include="ui\MenuAssetManager.h" />
+    <ClInclude Include="ui\Overlay.h" />
+    <ClInclude Include="ui\OverlayAssetManager.h" />
+    <ClInclude Include="ui\OverlayItem.h" />
+    <ClInclude Include="util\Util.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets" Condition="Exists('..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets')" />
+    <Import Project="..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets" Condition="Exists('..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets')" />
+    <Import Project="..\packages\glm.0.9.7.1\build\native\glm.targets" Condition="Exists('..\packages\glm.0.9.7.1\build\native\glm.targets')" />
+    <Import Project="..\packages\LodePNG.1.1.0\build\native\lodepng.targets" Condition="Exists('..\packages\LodePNG.1.1.0\build\native\lodepng.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets'))" />
+    <Error Condition="!Exists('..\packages\glm.0.9.7.1\build\native\glm.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glm.0.9.7.1\build\native\glm.targets'))" />
+    <Error Condition="!Exists('..\packages\LodePNG.1.1.0\build\native\lodepng.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\LodePNG.1.1.0\build\native\lodepng.targets'))" />
+  </Target>
+</Project>

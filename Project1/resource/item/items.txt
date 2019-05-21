@@ -1,0 +1,3 @@
+0,0,4,Potion,item_register,Item_Potion,Could make your hair explode
+1,2,2,Tonic,item_register,Item_Tonic,Grants a temporary boost in strength.
+2,3,3,Tarball,item_register,Item_Tar,Slows target unit movement.
