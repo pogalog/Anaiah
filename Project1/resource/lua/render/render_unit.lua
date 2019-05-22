@@ -14,8 +14,7 @@ function Render.createUnit( name )
 	unit.blendDst = GL.ONE_MINUS_SRC_ALPHA;
 	unit.depthTest = true;
 	unit.depthFunc = GL.LEQUAL;
-	
-	
+		
 	function unit.setOutput( framebuffer )
 		unit.output = framebuffer;
 		unit.useDefaultFBO = false;

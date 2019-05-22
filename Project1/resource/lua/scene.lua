@@ -37,11 +37,11 @@ require( "ui.menu.unit_inventory_menu" );
 require( "input.processing" );
 
 
-
-Framebuffers = {};
-Shaders = {};
-Units = {};
-Fonts = {};
+_G.RenderUnits = createList();
+_G.Framebuffers = {};
+_G.Shaders = {};
+_G.Units = {};
+_G.Fonts = {};
 local shaderPath = "resource/shader/";
 
 
@@ -143,26 +143,14 @@ function initScene()
 	pipeline.addUnits( blurH8RU, blurV8RU, blurH4RU, blurV4RU, blurH2RU, blurV2RU, blurH1RU, blurV1RU );
 	pipeline.addUnits( raysRU, rangeRU, noiseRU, gridRU, uiRU, screenRU );
 --	pipeline.addUnit( outputRU );
-	
+
+	RenderUnits.add( uiRU, "ui" );
+		
 	-- setup
-	-- pipeline.init();
-	bpfRU.clearBufferBits();
-	blurH8RU.clearBufferBits();
-	blurV8RU.clearBufferBits();
-	blurH4RU.clearBufferBits();
-	blurV4RU.clearBufferBits();
-	blurH2RU.clearBufferBits();
-	blurV2RU.clearBufferBits();
-	blurH1RU.clearBufferBits();
-	blurV1RU.clearBufferBits();
-	mainRU.clearBufferBits();
+	pipeline.clearBufferBits( bpfRU, blurH8RU, blurV8RU, blurH4RU, blurV4RU, blurH2RU, blurV2RU, blurH1RU, blurV1RU, mainRU );
+	pipeline.clearBufferBits( raysRU, uiRU, screenRU );
 	rangeRU.useBlendFunc( GL.SRC_ALPHA, GL.ONE );
-	raysRU.clearBufferBits();
---	noiseRU.clearBufferBits();
 	uiRU.useDepthFunc( GL.LEQUAL );
-	uiRU.clearBufferBits();
-	screenRU.clearBufferBits();
---	outputRU.clearBufferBits();
 	
 --	mainRU.setOutput( Framebuffers.gbuffer );
 	mainRU.setOutput( Framebuffers.main );

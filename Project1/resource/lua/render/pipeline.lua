@@ -21,7 +21,13 @@ function Render.createPipeline()
 	end
 	
 	function pipeline.init()
-		pipeline.units.execute( "clearBufferBits" );
+		-- probably do something in here
+	end
+	
+	function pipeline.clearBufferBits( ... )
+		for i, v in ipairs( {...} ) do
+			v.clearBufferBits();
+		end
 	end
 	
 	return pipeline;
