@@ -30,6 +30,10 @@ end
 
 
 function Binary.parseMapDataFromBinaryData( data, loadConnected )
+	if(#data == 0) then
+		return nil;
+	end
+	
 	local buffer = Binary.createBuffer( data );
 	
 	local mapName = readString( buffer );
