@@ -40,7 +40,12 @@ LevelMap* readMapVersion1_5( char *buffer, string &filename );
 LevelMap* LevelMapIO::readLevelMap( std::string &filename, lua_State *L )
 {
 	infile.open( filename.c_str(), ios::in | ios::binary );
-	if( !infile.is_open() ) return NULL;
+	if (!infile.is_open())
+	{
+		// push the empty byte buffer onto the Lua stack
+		lua_pushlstring( L, buffer, 0 );
+		return NULL;
+	}
 
 
 	ifstream in( filename.c_str(), std::ifstream::binary | std::ifstream::ate );
