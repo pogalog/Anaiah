@@ -6,6 +6,7 @@ require( "main.loop" );
 require( "game.main" );
 require( "math.matrix" );
 require( "input.main" );
+require( "render.pipeline" );
 require( "render.shader" );
 require( "render.render_unit" );
 require( "render.framebuffer" );
@@ -37,7 +38,6 @@ require( "input.processing" );
 
 
 
-RenderUnits = createList();
 Framebuffers = {};
 Shaders = {};
 Units = {};
@@ -66,6 +66,9 @@ function initScene()
 	local w, h = Render_getWindowSize( GameInstance );
 	Window.width = w;
 	Window.height = h;
+	
+	-- pipeline
+	local pipeline = Render.createPipeline();
 	
 	-- shaders
 	Shaders.wireShader = Render.createShader( "wire.vsh", "wire.fsh" );
@@ -119,7 +122,6 @@ function initScene()
 	Fix Blinn-phong lighting problems
 	Materials
 	Physically based shading techniques? (https://learnopengl.com/#!PBR/Theory)
-	Deferred shading (should be really easy)
 	SSAO (https://learnopengl.com/#!Advanced-Lighting/SSAO)
 	Point source shadows (http://ogldev.atspace.co.uk/www/tutorial43/tutorial43.html)
 	GPU Paricles
@@ -137,27 +139,13 @@ function initScene()
 	
 	
 	-- add to pipeline
-	mainRU.addToPipeline();
-	bpfRU.addToPipeline();
-	blurH8RU.addToPipeline();
-	blurV8RU.addToPipeline();
-	blurH4RU.addToPipeline();
-	blurV4RU.addToPipeline();
-	blurH2RU.addToPipeline();
-	blurV2RU.addToPipeline();
-	blurH1RU.addToPipeline();
-	blurV1RU.addToPipeline();
-	raysRU.addToPipeline();
-	rangeRU.addToPipeline();
-	noiseRU.addToPipeline();
-	gridRU.addToPipeline();
-	uiRU.addToPipeline();
-	screenRU.addToPipeline();
---	outputRU.addToPipeline();
-	
-	RenderUnits.add( uiRU, "ui" );
+	pipeline.addUnits( mainRU, bpfRU );
+	pipeline.addUnits( blurH8RU, blurV8RU, blurH4RU, blurV4RU, blurH2RU, blurV2RU, blurH1RU, blurV1RU );
+	pipeline.addUnits( raysRU, rangeRU, noiseRU, gridRU, uiRU, screenRU );
+--	pipeline.addUnit( outputRU );
 	
 	-- setup
+	-- pipeline.init();
 	bpfRU.clearBufferBits();
 	blurH8RU.clearBufferBits();
 	blurV8RU.clearBufferBits();
@@ -179,7 +167,7 @@ function initScene()
 --	mainRU.setOutput( Framebuffers.gbuffer );
 	mainRU.setOutput( Framebuffers.main );
 	rangeRU.setOutput( Framebuffers.main );
-	bpfRU.addInput( "sampler2D colormap", Framebuffers.main );
+	bpfRU.addInput( "colormap", Framebuffers.main );
 	bpfRU.setOutput( Framebuffers.bpf );
 	blurH8RU.addInput( "colormap", Framebuffers.bpf );
 	blurH8RU.setOutput( Framebuffers.bloomH8 );
