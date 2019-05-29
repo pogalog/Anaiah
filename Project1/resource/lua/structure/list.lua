@@ -43,6 +43,13 @@ function createList()
 		return list.data[list.len];
 	end
 	
+	function list.execute( process )
+		for i = 1, list.len do
+			local ii = list.get(i);
+			ii[process]();
+		end
+	end
+	
 	
 	-- checks to make sure this item is not already in the list before adding
 	function list.addUnique( item )
@@ -51,7 +58,7 @@ function createList()
 	end
   
 	function list.addItems( ... )
-		for i,v in ipairs( arg ) do
+		for i,v in ipairs( {...} ) do
 			list.add( v );
 		end
 	end

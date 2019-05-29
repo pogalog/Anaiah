@@ -6,6 +6,7 @@ require( "main.loop" );
 require( "game.main" );
 require( "math.matrix" );
 require( "input.main" );
+require( "render.pipeline" );
 require( "render.shader" );
 require( "render.render_unit" );
 require( "render.framebuffer" );
@@ -36,12 +37,11 @@ require( "ui.menu.unit_inventory_menu" );
 require( "input.processing" );
 
 
-
-RenderUnits = createList();
-Framebuffers = {};
-Shaders = {};
-Units = {};
-Fonts = {};
+_G.RenderUnits = createList();
+_G.Framebuffers = {};
+_G.Shaders = {};
+_G.Units = {};
+_G.Fonts = {};
 local shaderPath = "resource/shader/";
 
 
@@ -66,6 +66,9 @@ function initScene()
 	local w, h = Render_getWindowSize( GameInstance );
 	Window.width = w;
 	Window.height = h;
+	
+	-- pipeline
+	local pipeline = Render.createPipeline();
 	
 	-- shaders
 	Shaders.wireShader = Render.createShader( "wire.vsh", "wire.fsh" );
@@ -119,7 +122,6 @@ function initScene()
 	Fix Blinn-phong lighting problems
 	Materials
 	Physically based shading techniques? (https://learnopengl.com/#!PBR/Theory)
-	Deferred shading (should be really easy)
 	SSAO (https://learnopengl.com/#!Advanced-Lighting/SSAO)
 	Point source shadows (http://ogldev.atspace.co.uk/www/tutorial43/tutorial43.html)
 	GPU Paricles
@@ -137,49 +139,23 @@ function initScene()
 	
 	
 	-- add to pipeline
-	mainRU.addToPipeline();
-	bpfRU.addToPipeline();
-	blurH8RU.addToPipeline();
-	blurV8RU.addToPipeline();
-	blurH4RU.addToPipeline();
-	blurV4RU.addToPipeline();
-	blurH2RU.addToPipeline();
-	blurV2RU.addToPipeline();
-	blurH1RU.addToPipeline();
-	blurV1RU.addToPipeline();
-	raysRU.addToPipeline();
-	rangeRU.addToPipeline();
-	noiseRU.addToPipeline();
-	gridRU.addToPipeline();
-	uiRU.addToPipeline();
-	screenRU.addToPipeline();
---	outputRU.addToPipeline();
-	
+	pipeline.addUnits( mainRU, bpfRU );
+	pipeline.addUnits( blurH8RU, blurV8RU, blurH4RU, blurV4RU, blurH2RU, blurV2RU, blurH1RU, blurV1RU );
+	pipeline.addUnits( raysRU, rangeRU, noiseRU, gridRU, uiRU, screenRU );
+--	pipeline.addUnit( outputRU );
+
 	RenderUnits.add( uiRU, "ui" );
-	
+		
 	-- setup
-	bpfRU.clearBufferBits();
-	blurH8RU.clearBufferBits();
-	blurV8RU.clearBufferBits();
-	blurH4RU.clearBufferBits();
-	blurV4RU.clearBufferBits();
-	blurH2RU.clearBufferBits();
-	blurV2RU.clearBufferBits();
-	blurH1RU.clearBufferBits();
-	blurV1RU.clearBufferBits();
-	mainRU.clearBufferBits();
+	pipeline.clearBufferBits( bpfRU, blurH8RU, blurV8RU, blurH4RU, blurV4RU, blurH2RU, blurV2RU, blurH1RU, blurV1RU, mainRU );
+	pipeline.clearBufferBits( raysRU, uiRU, screenRU );
 	rangeRU.useBlendFunc( GL.SRC_ALPHA, GL.ONE );
-	raysRU.clearBufferBits();
---	noiseRU.clearBufferBits();
 	uiRU.useDepthFunc( GL.LEQUAL );
-	uiRU.clearBufferBits();
-	screenRU.clearBufferBits();
---	outputRU.clearBufferBits();
 	
 --	mainRU.setOutput( Framebuffers.gbuffer );
 	mainRU.setOutput( Framebuffers.main );
 	rangeRU.setOutput( Framebuffers.main );
-	bpfRU.addInput( "sampler2D colormap", Framebuffers.main );
+	bpfRU.addInput( "colormap", Framebuffers.main );
 	bpfRU.setOutput( Framebuffers.bpf );
 	blurH8RU.addInput( "colormap", Framebuffers.bpf );
 	blurH8RU.setOutput( Framebuffers.bloomH8 );
@@ -237,7 +213,7 @@ function initScene()
 	UI.initializeUIRegister( Controller );
 		
 	-- LevelMap
-	local LM_data = Game_readLevelMap( GameInstance, "resource/map/test.tbs" );
+	local LM_data = Game_readLevelMap( GameInstance, "resource/map/map0.tbs" );
 	_G.LevelMap = Binary.parseMapDataFromBinaryData( LM_data, true );
 	LevelMap.grid.generateModel();
 	LevelMap.getTilePointers();
@@ -260,7 +236,7 @@ function initScene()
 	Game.readWeaponsFromDisk();
 	
 	-- Units
-	local unit_Anaiah = placeUnit( "Anaiah", Vec4_new( 0.2, 0.5, 0.7, 1.0 ), Vec2_new( 3, 0 ), "Anaiah.rel", "Anaiah_attack" );
+	local unit_Anaiah = placeUnit( "Anaiah", Vec4_new( 0.2, 0.5, 0.7, 1.0 ), Vec2_new( 4, 3 ), "Anaiah.rel", "Anaiah_attack" );
 	mainRU.addUnit( unit_Anaiah );
 	unit_Anaiah.addItem( Items.Potion );
 	unit_Anaiah.addItem( Items.Tarball );

@@ -14,12 +14,7 @@ function Render.createUnit( name )
 	unit.blendDst = GL.ONE_MINUS_SRC_ALPHA;
 	unit.depthTest = true;
 	unit.depthFunc = GL.LEQUAL;
-	
-	
-	function unit.addToPipeline()
-		Render_addRenderUnit( GameInstance, unit.userdata );
-	end
-	
+		
 	function unit.setOutput( framebuffer )
 		unit.output = framebuffer;
 		unit.useDefaultFBO = false;
@@ -139,7 +134,7 @@ function Render.createPostRU( name, ... )
 	function ru.addInput( name, framebuffer )
 		ru.quad.addFramebuffer( name, framebuffer );
 	end
-	
+		
 	function ru.addTexture( name, texture )
 		ru.quad.addTexture( name, texture )
 	end
