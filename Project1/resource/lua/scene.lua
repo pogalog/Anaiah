@@ -213,7 +213,7 @@ function initScene()
 	UI.initializeUIRegister( Controller );
 		
 	-- LevelMap
-	local LM_data = Game_readLevelMap( GameInstance, "resource/map/test.tbs" );
+	local LM_data = Game_readLevelMap( GameInstance, "resource/map/map0.tbs" );
 	_G.LevelMap = Binary.parseMapDataFromBinaryData( LM_data, true );
 	LevelMap.grid.generateModel();
 	LevelMap.getTilePointers();
@@ -236,7 +236,7 @@ function initScene()
 	Game.readWeaponsFromDisk();
 	
 	-- Units
-	local unit_Anaiah = placeUnit( "Anaiah", Vec4_new( 0.2, 0.5, 0.7, 1.0 ), Vec2_new( 3, 0 ), "Anaiah.rel", "Anaiah_attack" );
+	local unit_Anaiah = placeUnit( "Anaiah", Vec4_new( 0.2, 0.5, 0.7, 1.0 ), Vec2_new( 4, 3 ), "Anaiah.rel", "Anaiah_attack" );
 	mainRU.addUnit( unit_Anaiah );
 	unit_Anaiah.addItem( Items.Potion );
 	unit_Anaiah.addItem( Items.Tarball );
